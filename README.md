@@ -30,6 +30,47 @@ Para exemplificar um uso básico das funcionalidades do Laravel, construiremos u
 
 Primeiro você precisará de uma nova instalação do Laravel. Você pode utilizar a [virtual machine Homestead](http://laravel.artesaos.org/docs/master/homestead) ou o ambiente PHP de sua preferência para executar o framework. Uma vez que seu ambiente esteja pronto, você pode instalar o framework Laravel utilizando o Composer:
 
+### Instalar o composer
+
+Para gerenciar dependências, o Laravel usa o ** composer **. Certifique-se de ter um Composer instalado no seu sistema antes de instalar o Laravel. Neste capítulo, você verá o processo de instalação do Laravel.
+
+Você terá que seguir os passos abaixo para instalar o Laravel em seu sistema -
+
+**Etapa 1** - Visite o seguinte URL e faça o download do compositor para instalá-lo em seu sistema.
+
+[https://getcomposer.org/download/](https://getcomposer.org/download/)
+
+**Etapa 2** - Depois que o Composer estiver instalado, verifique a instalação digitando o comando Composer no prompt de comando, conforme mostrado na captura de tela a seguir.
+
+![Composer](https://www.tutorialspoint.com/laravel/images/composer.jpg)
+
+** Etapa 3 ** - Crie um novo diretório em qualquer lugar do sistema para o seu novo projeto do Laravel. Depois disso, mova para o caminho onde você criou o novo diretório e digite o seguinte comando para instalar o Laravel.
+```php
+composer create-project laravel/laravel --prefer-dist
+```
+Agora, vamos nos concentrar na instalação da versão 5.7. No Laravel versão 5.7, você pode instalar o framework completo digitando o seguinte comando -
+```php
+composer create-project laravel/laravel test dev-develop
+```
+A saída do comando é mostrada abaixo -
+
+! [Composer Create Project] (https://www.tutorialspoint.com/laravel/images/composer_create_project.jpg)
+
+A estrutura do Laravel pode ser instalada diretamente com o ramo de desenvolvimento, que inclui o framework mais recente.
+
+** Etapa 4 ** - O comando acima instalará o Laravel no diretório atual. Inicie o serviço Laravel executando o seguinte comando.
+
+```php
+php artisan serve
+```
+** Passo 5 ** - Depois de executar o comando acima, você verá uma tela como mostrada abaixo -
+![Administrator](https://www.tutorialspoint.com/laravel/images/administrator.jpg)
+
+**Step 6** − Copy the URL underlined in gray in the above screenshot and open that URL in the browser. If you see the following screen, it implies Laravel has been installed successfully.
+
+![Laravel Installed](https://www.tutorialspoint.com/laravel/images/laravel_installed.jpg)
+
+
 ```php
 composer create-project laravel/laravel quickstart --prefer-dist
 ```
