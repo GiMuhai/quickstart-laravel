@@ -72,8 +72,15 @@ php artisan serve
 
 
 ```php
-composer create-project laravel/laravel quickstart --prefer-dist
+composer create-project laravel/laravel="5.2" quickstart --prefer-dist
 ```
+Nota 1: depois do comando anterior, entre na pasta quickstar usando o command prompt e execute o seguinte
+
+```php
+composer update --no-scripts
+composer update
+```
+Depois siga o tutorial. ( salte para a seccao Preparando o Banco de Dados....... ignore o git clone....)
 
 Você pode continuar apenas lendo este guia; entretanto, se desejar realizar o download do código fonte utilizado neste guia e executá-lo em seu ambiente local, você pode clonar seu repositório Git e instalar suas dependências:
 
@@ -227,6 +234,7 @@ Como discutimos antes, todas as visões do Laravel são armazenadas em `resource
 
 Nossa visão `app.blade.php` deve ser semelhante com código abaixo:
 
+Nota: criar a pasta layouts dentro da pasta views e la dentro, crie o ficheiro app.blade.php, com o conteudo abaixo
 ```php
 // resources/views/layouts/app.blade.php
 
@@ -258,6 +266,7 @@ Observe a porção `@yield('content')` do layout. Está é uma diretiva especial
 
 Vamos ignorar o uso do Bootstrap CSS e focar apenas nas coisas que interessam. Lembre-se, você pode baixar o projeto completo para esta aplicação no [GitHub](https://github.com/laravel/quickstart-basic):
 
+Nota 3: o ficheiro tasks.blade.php fica na pasta views, nao layouts como o app.blade.php
 ```php
 // resources/views/tasks.blade.php
 
@@ -345,6 +354,7 @@ Vamos parar por um momento e conversar sobre a porção `->withErrors($validator
 
 Lembre-se que usamos a diretiva `@include('common.errors')` dentro da nossa visão para renderizar os erros de validação do formulário. O `common.errors` permitirá exibir facilmente os erros de validação utilizando o mesmo formato em toda as páginas. Vamos definir o conteúdo desta visão agora:
 
+Nota 4: dentro da pasta views, criar a pasta common, e la dentro de common criar o ficheiro errors.blade.php com o conteudo abaixo
 ```php
 // resources/views/common/errors.blade.php
 
@@ -369,6 +379,8 @@ Lembre-se que usamos a diretiva `@include('common.errors')` dentro da nossa vis�
 ### Criando um Tarefa
 
 Agora que cuidamos da validação, vamos criar uma nova tarefa continuando a preencher nossa rota. Uma vez que a nova tarefa esteja criada, redirecionaremos o usuários para a URL `/`. Para criar a tarefa, podemos usar o método `save` após criar e definir as propriedades no novo modelo Eloquent.
+
+Nota 5: no ficheiro routes.php o Route::post tem de ser modificado para ficar como abaixo:
 
 ```php
 Route::post('/task', function (Request $request) {
@@ -408,11 +420,9 @@ Route::get('/', function () {
 
 Uma vez passado os dados, podemos iterar sobre o array de tarefas na visão `tasks.blade.php` e exibi-las em uma tabela. A diretiva `@foreach` do Blade nos permite escrever loops de forma concisa. Estes loops serão transformados para código PHP puro e rápido:
 
+Nota 6: inserir esse bloco de codigo no ficheiro tasks.blade.php depois da linha que diz "TODO: Current Tasks"
 ```php
-@extends('layouts.app')
 
-@section('content')
-    <!-- Create Task Form... -->
 
     <!-- Current Tasks -->
     @if (count($tasks) > 0)
@@ -449,7 +459,7 @@ Uma vez passado os dados, podemos iterar sobre o array de tarefas na visão `tas
             </div>
         </div>
     @endif
-@endsection
+
 ```
 
 Nossa aplicação está quase completa. Ainda não temos como apagar um tarefa existente. Vamos criar isto!
@@ -460,13 +470,14 @@ Nossa aplicação está quase completa. Ainda não temos como apagar um tarefa e
 
 Deixamos uma nota de “TODO” em nosso código onde nosso botão de apagar deverá estar. Vamos adicionar um botão de apagar para cada linha da nossa lista de tarefa na visão `tasks.blade.php`. Criaremos um pequeno formulário contendo apenas um botão para cada tarefa da lista. Quando clicado, uma requisição `DELETE /task` será enviada para a aplicação:
 
+Nota 7: o bloco de codigo abaixo, deve ser inserido no entre @foreach ($tasks as $task) e @endforeach do ficheiro tasks.blade.app .... subistituindo o que la estiver.
 ```php
 <tr>
     <!-- Task Name -->
     <td class="table-text">
         <div>{{ $task->name }}</div>
     </td>
-
+					
     <!-- Delete Button -->
     <td>
         <form action="/task/{{ $task->id }}" method="POST">
@@ -502,3 +513,4 @@ Route::delete('/task/{id}', function ($id) {
 ```
 
 ;
+	
